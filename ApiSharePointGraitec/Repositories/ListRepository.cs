@@ -92,7 +92,7 @@ namespace ApiSharePointGraitec.Repositories
             listCreationInfo.TemplateType = (int)type;
             
             List list = web.Lists.Add(listCreationInfo);
-            _context.ExecuteQuery();
+            //_context.ExecuteQuery();
             return getById(list.Id);
         }
     }
