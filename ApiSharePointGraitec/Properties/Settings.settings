@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ApiSharePointGraitec.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="AppId" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">PaVwf5p1sCN8mw/sRH1Y8FwbXQBqROUEU5gYbKeT9jAIxqB6I8iebdSwIwRW8A8d</Value>
+    </Setting>
+    <Setting Name="AppSecret" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">o+Ma81pwQo+Xh2iXxxEqEcvBGg71Z549CyzC9RIUTI971xwQlc5jioWqoJFsrahx</Value>
+    </Setting>
+    <Setting Name="SiteUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://graitecprueba.sharepoint.com/sites/Sitiodeprueba</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
