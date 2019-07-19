@@ -20,7 +20,7 @@ namespace ConsoleAppSharePoint
             //Caso 1
             //**********
             //Trae todas las listas visibles en sharepoint, con todos los items
-            EjecutaCaso1();
+            //EjecutaCaso1();
 
             //Caso 2
             //**********
@@ -154,7 +154,21 @@ namespace ConsoleAppSharePoint
         private static void EjecutaCaso8()
         {
             ApiSharePointGraitec.ApiUoW apiSharePoint = new ApiSharePointGraitec.ApiUoW();
-            Lista lista = apiSharePoint.Listas.set("Lista creadad desde C#", "descripcion temporal", ListTemplateType.DocumentLibrary);
+            //Crea una lista del tipo Document Library con el nombre "Lista creadad desde C#" y con la descripcion "descripcion temporal"
+            //La lista creada se puede ver en "Contenido del sitio" dentro del sitio "Sitio de Prueba"
+            Lista lista  = apiSharePoint.Listas.getByTitle("Lista creadad desde C# v3");
+            if (lista == null)
+            {
+                lista = apiSharePoint.Listas.set("Lista creadad desde C# v3", "descripcion temporal", ListTemplateType.DocumentLibrary);
+                apiSharePoint.Listas.update(lista.Id, "Lista modificada v2", "Descripcion modificada", true, DateTime.Now);
+                lista = apiSharePoint.Listas.getById(lista.Id);
+            }
+            else
+            {
+                apiSharePoint.Listas.delete("Lista creadad desde C# v3");
+            }
+
+            
         }
 
     }

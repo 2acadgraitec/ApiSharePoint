@@ -21,7 +21,7 @@ namespace ApiSharePointGraitec.Repositories
         {
             //Solo recupera los campos que se necesitan.
             _context.Load(_context.Web.Lists, eachList=> eachList.Where(list => list.Hidden == false && (list.BaseType == BaseType.GenericList || list.BaseType == BaseType.DocumentLibrary))
-                                                                 .Include(list => list.Title, list => list.Id, list => list.RootFolder, list => list.BaseType));
+                                                                 .Include(list => list.Title, list => list.Id, list => list.RootFolder, list => list.BaseType, list => list.Tag));
             
             _context.ExecuteQuery();
             return ListaMapper.Map(_context.Web.Lists);
@@ -33,7 +33,7 @@ namespace ApiSharePointGraitec.Repositories
             List<Lista> result = new List<Lista>();
             //Solo recupera los campos que se necesitan.
             _context.Load(_context.Web.Lists, eachList => eachList.Where( list => list.Hidden ==false && (list.BaseType == BaseType.GenericList || list.BaseType == BaseType.DocumentLibrary))
-                                                                  .Include(list => list.Title, list => list.Id, list=> list.RootFolder, list => list.BaseType));
+                                                                  .Include(list => list.Title, list => list.Id, list=> list.RootFolder, list => list.BaseType, list=> list.Tag ));
             _context.ExecuteQuery();
             
             foreach (List list in _context.Web.Lists)
@@ -92,8 +92,69 @@ namespace ApiSharePointGraitec.Repositories
             listCreationInfo.TemplateType = (int)type;
             
             List list = web.Lists.Add(listCreationInfo);
-            //_context.ExecuteQuery();
-            return getById(list.Id);
+            _context.ExecuteQuery();
+            //Se consulta por Title, porque el id no se tiene, y ademas como no puede existir dos listas con el mismo nombre, no hay problema de seleccionar una lista incorrecta
+            return getByTitle(title);
+        }
+
+        public bool delete (string title)
+        {
+            try
+            {
+                List list = _context.Web.Lists.GetByTitle(title);
+                list.DeleteObject();
+                _context.ExecuteQuery();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+            
+        }
+
+        public bool delete(Guid id)
+        {
+            try
+            {
+                List list = _context.Web.Lists.GetById(id);
+                list.DeleteObject();
+                _context.ExecuteQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
+
+        public bool update(Guid id, string title, string description, bool? hidden, object tag)
+        {
+            try
+            {
+                List list = _context.Web.Lists.GetById(id);
+
+                if (title != null)
+                    list.Title = title;
+
+                if (description != null)
+                    list.Description = description;
+
+                if (hidden != null)
+                    list.Hidden = hidden.Value;
+
+                if (tag != null)
+                    list.Tag = tag;
+
+                list.Update();
+                _context.ExecuteQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

@@ -15,5 +15,6 @@ namespace ApiSharePointGraitec.Models
         public string ServerRelativeUrl { get; set; }
         public BaseType Type { get; set; }
         public List<ItemLista> Items { get; set; }
+        public Object Tag { get; set; }
     }
 }

@@ -10,27 +10,35 @@ namespace ApiSharePointGraitec.Mapper
 
         public static Lista Map(List listSharePoint)
         {
-            return new Lista()
-            {
-                Title = listSharePoint.Title.ToString(),
-                Id = listSharePoint.Id,
-                Type = listSharePoint.BaseType,
-                RootFolder = listSharePoint.RootFolder ,
-                ServerRelativeUrl = listSharePoint.RootFolder.ServerRelativeUrl
-            };
+            if (listSharePoint != null)
+                return new Lista()
+                {
+                    Title = listSharePoint.Title.ToString(),
+                    Id = listSharePoint.Id,
+                    Type = listSharePoint.BaseType,
+                    RootFolder = listSharePoint.RootFolder,
+                    ServerRelativeUrl = listSharePoint.RootFolder.ServerRelativeUrl,
+                    Tag = (listSharePoint.IsPropertyAvailable("Tag")) ? listSharePoint.Tag : null
+                };
+            else
+                return null;
         }
 
         public static Lista Map(List listSharePoint, List<ItemLista> items)
         {
-            return new Lista()
-            {
-                Title = listSharePoint.Title.ToString(),
-                Id = listSharePoint.Id,
-                Type = listSharePoint.BaseType,
-                RootFolder = listSharePoint.RootFolder,
-                ServerRelativeUrl = listSharePoint.RootFolder.ServerRelativeUrl,
-                Items = items
-            };
+            if (listSharePoint != null)
+                return new Lista()
+                {
+                    Title = listSharePoint.Title.ToString(),
+                    Id = listSharePoint.Id,
+                    Type = listSharePoint.BaseType,
+                    RootFolder = listSharePoint.RootFolder,
+                    ServerRelativeUrl = listSharePoint.RootFolder.ServerRelativeUrl,
+                    Items = items,
+                    Tag = (listSharePoint.IsPropertyAvailable("Tag")) ? listSharePoint.Tag : null
+                };
+            else
+                return null;
         }
 
         public static List<Lista> Map(ListCollection listCollection)

@@ -11,17 +11,21 @@ namespace ApiSharePointGraitec.Mapper
     public static class ItemListaMapper
     {
         public static ItemLista Map(ListItem itemListSharePoint)
-        {                        
-            return new ItemLista()
-            {
-                DisplayName = itemListSharePoint.DisplayName,
-                Type = itemListSharePoint.FileSystemObjectType.ToString(),
-                Id = itemListSharePoint.Id,
-                Attachments = itemListSharePoint.AttachmentFiles,
-                File = itemListSharePoint.File,
-                FileName = (itemListSharePoint.FileSystemObjectType.ToString().ToLower() == "file" && itemListSharePoint.File.IsPropertyAvailable("Name")) ? itemListSharePoint.File.Name : null,
-                FileServerRelativeUrl = (itemListSharePoint.FileSystemObjectType.ToString().ToLower() == "file" && itemListSharePoint.File.IsPropertyAvailable("ServerRelativeUrl")) ? itemListSharePoint.File.ServerRelativeUrl : null
-            };
+        {
+            if (itemListSharePoint != null)
+                return new ItemLista()
+                {
+                    DisplayName = itemListSharePoint.DisplayName,
+                    Type = itemListSharePoint.FileSystemObjectType.ToString(),
+                    Id = itemListSharePoint.Id,
+                    Attachments = itemListSharePoint.AttachmentFiles,
+                    File = itemListSharePoint.File,
+                    FileName = (itemListSharePoint.FileSystemObjectType.ToString().ToLower() == "file" && itemListSharePoint.File.IsPropertyAvailable("Name")) ? itemListSharePoint.File.Name : null,
+                    FileServerRelativeUrl = (itemListSharePoint.FileSystemObjectType.ToString().ToLower() == "file" && itemListSharePoint.File.IsPropertyAvailable("ServerRelativeUrl")) ? itemListSharePoint.File.ServerRelativeUrl : null                    
+                };
+            else
+                return null;
+
         }
 
         public static List<ItemLista> Map(ListItemCollection listItemCollection)

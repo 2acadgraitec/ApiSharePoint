@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppEncrypter", "AppEncrypter\AppEncrypter.csproj", "{978DB5A0-13CA-4553-9D26-9A8121D18D8A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clientes", "Clientes", "{B6C5032B-6FFD-4211-895B-5BD6FF9FDE29}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{B6C5032B-6FFD-4211-895B-5BD6FF9FDE29}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppSharePoint", "ConsoleAppSharePoint\ConsoleAppSharePoint.csproj", "{EB2E610C-C136-411B-99EF-CF4B80015CA1}"
 EndProject
