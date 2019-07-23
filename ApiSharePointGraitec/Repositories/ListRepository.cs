@@ -21,7 +21,7 @@ namespace ApiSharePointGraitec.Repositories
         {
             //Solo recupera los campos que se necesitan.
             _context.Load(_context.Web.Lists, eachList=> eachList.Where(list => list.Hidden == false && (list.BaseType == BaseType.GenericList || list.BaseType == BaseType.DocumentLibrary))
-                                                                 .Include(list => list.Title, list => list.Id, list => list.RootFolder, list => list.BaseType, list => list.Tag));
+                                                                 .Include(list => list.Title, list => list.Id, list => list.RootFolder, list => list.BaseType));
             
             _context.ExecuteQuery();
             return ListaMapper.Map(_context.Web.Lists);
@@ -33,7 +33,7 @@ namespace ApiSharePointGraitec.Repositories
             List<Lista> result = new List<Lista>();
             //Solo recupera los campos que se necesitan.
             _context.Load(_context.Web.Lists, eachList => eachList.Where( list => list.Hidden ==false && (list.BaseType == BaseType.GenericList || list.BaseType == BaseType.DocumentLibrary))
-                                                                  .Include(list => list.Title, list => list.Id, list=> list.RootFolder, list => list.BaseType, list=> list.Tag ));
+                                                                  .Include(list => list.Title, list => list.Id, list=> list.RootFolder, list => list.BaseType ));
             _context.ExecuteQuery();
             
             foreach (List list in _context.Web.Lists)
@@ -129,7 +129,7 @@ namespace ApiSharePointGraitec.Repositories
 
         }
 
-        public bool update(Guid id, string title, string description, bool? hidden, object tag)
+        public bool update(Guid id, string title, string description, bool? hidden)
         {
             try
             {
@@ -144,9 +144,6 @@ namespace ApiSharePointGraitec.Repositories
                 if (hidden != null)
                     list.Hidden = hidden.Value;
 
-                if (tag != null)
-                    list.Tag = tag;
-
                 list.Update();
                 _context.ExecuteQuery();
                 return true;
@@ -156,5 +153,6 @@ namespace ApiSharePointGraitec.Repositories
                 return false;
             }
         }
+
     }
 }

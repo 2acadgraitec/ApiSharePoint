@@ -17,8 +17,7 @@ namespace ApiSharePointGraitec.Mapper
                     Id = listSharePoint.Id,
                     Type = listSharePoint.BaseType,
                     RootFolder = listSharePoint.RootFolder,
-                    ServerRelativeUrl = listSharePoint.RootFolder.ServerRelativeUrl,
-                    Tag = (listSharePoint.IsPropertyAvailable("Tag")) ? listSharePoint.Tag : null
+                    ServerRelativeUrl = listSharePoint.RootFolder.ServerRelativeUrl                    
                 };
             else
                 return null;
@@ -34,8 +33,7 @@ namespace ApiSharePointGraitec.Mapper
                     Type = listSharePoint.BaseType,
                     RootFolder = listSharePoint.RootFolder,
                     ServerRelativeUrl = listSharePoint.RootFolder.ServerRelativeUrl,
-                    Items = items,
-                    Tag = (listSharePoint.IsPropertyAvailable("Tag")) ? listSharePoint.Tag : null
+                    Items = items                    
                 };
             else
                 return null;

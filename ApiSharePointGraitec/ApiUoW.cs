@@ -32,6 +32,8 @@ namespace ApiSharePointGraitec
         private readonly ClientContext _context;
         public ListRepository Listas { get; private set; }
         public ItemListRespository ItemListas { get; private set; }
+        public FieldListRespository FieldListas { get; private set; }
+
         public ApiUoW()
         {
             
@@ -42,14 +44,9 @@ namespace ApiSharePointGraitec
             _context = new AuthenticationManager().GetAppOnlyAuthenticatedContext(siteUrl, appAppId, appSecret);
             Listas = new ListRepository(_context);
             ItemListas = new ItemListRespository(_context);
+            FieldListas = new FieldListRespository(_context);
         }
        
-
-        public void Complete()
-        {
-            _context.ExecuteQuery();
-        }
-
         
         
     }

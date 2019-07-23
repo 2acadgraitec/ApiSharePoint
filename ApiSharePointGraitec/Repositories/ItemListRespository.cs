@@ -116,8 +116,6 @@ namespace ApiSharePointGraitec.Repositories
 
         }
         
-
-
         public bool uploadFile(Folder folder, string filePathSource)
         {
             try
@@ -208,7 +206,7 @@ namespace ApiSharePointGraitec.Repositories
             return getById(guidList, itemLista.Id);
         }
 
-        public ItemLista updateItemLista(Guid guidList, int idItem, string tituloItem)
+        public ItemLista update(Guid guidList, int idItem, string tituloItem)
         {
             var list = _context.Web.Lists.GetById(guidList);
             ListItem listItem = list.GetItemById(idItem);

@@ -160,8 +160,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiUoW.cs" />
+    <Compile Include="Mapper\FieldListaMapper.cs" />
     <Compile Include="Mapper\ItemListaMapper.cs" />
     <Compile Include="Mapper\ListaMapper.cs" />
+    <Compile Include="Models\FieldLista.cs" />
     <Compile Include="Models\ItemLista.cs" />
     <Compile Include="Models\Lista.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -170,6 +172,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\FieldListRespository.cs" />
     <Compile Include="Repositories\ItemListRespository.cs" />
     <Compile Include="Repositories\ListRepository.cs" />
   </ItemGroup>
