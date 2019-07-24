@@ -161,11 +161,15 @@
   <ItemGroup>
     <Compile Include="ApiUoW.cs" />
     <Compile Include="Mapper\FieldListaMapper.cs" />
+    <Compile Include="Mapper\GrupoMapper.cs" />
+    <Compile Include="Mapper\UsuarioMapper.cs" />
     <Compile Include="Mapper\ItemListaMapper.cs" />
     <Compile Include="Mapper\ListaMapper.cs" />
     <Compile Include="Models\FieldLista.cs" />
+    <Compile Include="Models\Grupo.cs" />
     <Compile Include="Models\ItemLista.cs" />
     <Compile Include="Models\Lista.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -173,7 +177,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Repositories\FieldListRespository.cs" />
+    <Compile Include="Repositories\UsuarioRepository.cs" />
     <Compile Include="Repositories\ItemListRespository.cs" />
+    <Compile Include="Repositories\GroupRepository.cs" />
     <Compile Include="Repositories\ListRepository.cs" />
   </ItemGroup>
   <ItemGroup>

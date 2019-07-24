@@ -63,8 +63,16 @@ namespace ConsoleAppSharePoint
             //Caso 9
             //**********
             //Crea una lista añadiendo todos los tipos de campos, editando y eliminando.
-            EjecutaCaso9();
+            //EjecutaCaso9();
 
+            //Caso 10
+            //**********
+            //Crea un Grupo en el sitio
+            EjecutaCaso10();
+
+            //Caso 11
+            //Busqueda de usuario
+            //EjecutaCaso11();
         }
 
         private static void EjecutaCaso1()
@@ -248,6 +256,26 @@ namespace ConsoleAppSharePoint
                                 new string[] { "option 1 modi", "option 2 moid" }, "option 1 modi", true);
 
             apiSharePoint.FieldListas.deleteField(lista.Id, field.Id);
+        }
+
+        public static void EjecutaCaso10()
+        {
+            ApiSharePointGraitec.ApiUoW apiSharePoint = new ApiSharePointGraitec.ApiUoW();
+            //Trae todos los grupos de un sitio
+            List<Grupo> list = apiSharePoint.Grupos.getAll();
+            //Trae la informacion de un determinado grupo, dado un id
+            var grupo = apiSharePoint.Grupos.getById(list[0].Id);
+            //Trae todos los usuarios pertenecientes a un grupo, dado el id del grupo.
+            var usuarios = apiSharePoint.Grupos.getAllUsersById(grupo.Id);
+            apiSharePoint.Grupos.setUser(grupo.Id, "Usurio2@graitecprueba.onmicrosoft.com");
+
+        }
+
+        public static void EjecutaCaso11()
+        {
+            ApiSharePointGraitec.ApiUoW apiSharePoint = new ApiSharePointGraitec.ApiUoW();
+            var usuario = apiSharePoint.Usuarios.getByLoginName(@"i:0#.f|membership|usurio2@graitecprueba.onmicrosoft.com");
+            var usuario2 = apiSharePoint.Usuarios.getByEmail("prueba@graitecprueba.onmicrosoft.com");
         }
     }
 }

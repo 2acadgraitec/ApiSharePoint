@@ -33,6 +33,8 @@ namespace ApiSharePointGraitec
         public ListRepository Listas { get; private set; }
         public ItemListRespository ItemListas { get; private set; }
         public FieldListRespository FieldListas { get; private set; }
+        public GroupRepository Grupos { get; private set; }
+        public UsuarioRepository Usuarios { get; private set; }
 
         public ApiUoW()
         {
@@ -45,6 +47,8 @@ namespace ApiSharePointGraitec
             Listas = new ListRepository(_context);
             ItemListas = new ItemListRespository(_context);
             FieldListas = new FieldListRespository(_context);
+            Grupos = new GroupRepository(_context);
+            Usuarios = new UsuarioRepository(_context);
         }
        
         
